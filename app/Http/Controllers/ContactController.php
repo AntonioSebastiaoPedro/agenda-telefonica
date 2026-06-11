@@ -19,7 +19,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Retorna uma lista paginada dos contatos.
      */
     public function index(Request $request): JsonResponse
     {
@@ -28,7 +28,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Armazena um novo contato no banco de dados.
      */
     public function store(ContactStoreRequest $request): JsonResponse
     {
@@ -40,7 +40,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Exibe os detalhes de um contato específico.
      */
     public function show(Contact $contact): JsonResponse
     {
@@ -48,7 +48,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualiza um contato existente no banco de dados.
      */
     public function update(ContactUpdateRequest $request, Contact $contact): JsonResponse
     {
@@ -60,7 +60,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove o contato especificado do banco de dados.
      */
     public function destroy(Contact $contact): JsonResponse
     {

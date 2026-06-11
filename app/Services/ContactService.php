@@ -11,7 +11,7 @@ use App\Events\ContactDeleted;
 class ContactService
 {
     /**
-     * Get paginated contacts with optional filters.
+     * Obtém os contatos paginados com filtros opcionais.
      */
     public function getContacts(array $filters = [], int $perPage = 15): LengthAwarePaginator
     {
@@ -62,7 +62,7 @@ class ContactService
     }
 
     /**
-     * Create a new contact.
+     * Cria um novo contato.
      */
     public function createContact(array $data): Contact
     {
@@ -73,7 +73,7 @@ class ContactService
     }
 
     /**
-     * Update an existing contact.
+     * Atualiza um contato existente.
      */
     public function updateContact(Contact $contact, array $data): Contact
     {
@@ -84,7 +84,7 @@ class ContactService
     }
 
     /**
-     * Delete a contact.
+     * Remove um contato.
      */
     public function deleteContact(Contact $contact): bool
     {

@@ -38,7 +38,7 @@
             </div>
             <div class="ml-auto flex items-center">
                 <!-- User dropdown (placeholder) -->
-                <button class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-gray-900">
+                <button class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
                     <span>Admin</span>
                     <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold">
                         A
@@ -53,5 +53,6 @@
         </main>
     </div>
 
+    @stack('scripts')
 </body>
 </html>

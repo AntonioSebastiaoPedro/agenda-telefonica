@@ -16,7 +16,7 @@ class ContactCreated implements ShouldBroadcastNow
     public Contact $contact;
 
     /**
-     * Create a new event instance.
+     * Cria uma nova instância do evento.
      */
     public function __construct(Contact $contact)
     {
@@ -24,7 +24,7 @@ class ContactCreated implements ShouldBroadcastNow
     }
 
     /**
-     * Get the channels the event should broadcast on.
+     * Obtém os canais nos quais o evento deve ser transmitido.
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
