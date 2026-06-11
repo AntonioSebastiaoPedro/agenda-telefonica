@@ -4,6 +4,9 @@ namespace App\Services;
 
 use App\Models\Contact;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Events\ContactCreated;
+use App\Events\ContactUpdated;
+use App\Events\ContactDeleted;
 
 class ContactService
 {
@@ -63,8 +66,10 @@ class ContactService
      */
     public function createContact(array $data): Contact
     {
-        // Aqui no futuro dispararemos o evento ContactCreated (Fase 4)
-        return Contact::create($data);
+        $contact = Contact::create($data);
+        ContactCreated::dispatch($contact);
+        
+        return $contact;
     }
 
     /**
@@ -73,7 +78,7 @@ class ContactService
     public function updateContact(Contact $contact, array $data): Contact
     {
         $contact->update($data);
-        // Aqui no futuro dispararemos o evento ContactUpdated (Fase 4)
+        ContactUpdated::dispatch($contact);
         
         return $contact;
     }
@@ -83,8 +88,12 @@ class ContactService
      */
     public function deleteContact(Contact $contact): bool
     {
+        $id = $contact->id;
         $deleted = $contact->delete();
-        // Aqui no futuro dispararemos o evento ContactDeleted (Fase 4)
+        
+        if ($deleted) {
+            ContactDeleted::dispatch($id);
+        }
         
         return $deleted;
     }
