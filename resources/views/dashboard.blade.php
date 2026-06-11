@@ -476,14 +476,15 @@
 
                 listenToWebsockets() {
                     if (typeof window.Echo !== 'undefined') {
+                        // Previne listeners duplicados caso o Vite faça Hot Module Replacement (HMR)
+                        window.Echo.leaveChannel('contacts');
+                        
                         window.Echo.channel('contacts')
                             .listen('ContactCreated', (e) => {
-                                // Realiza um novo fetch para manter a paginação correta e ordenação
+                                // Atualiza a lista silenciosamente
                                 this.fetchContacts();
-                                this.showToast('Novo contato recebido!', 'success');
                             })
                             .listen('ContactUpdated', (e) => {
-                                // Atualiza na memória ou faz fetch
                                 const index = this.contacts.findIndex(c => c.id === e.contact.id);
                                 if (index !== -1) {
                                     this.contacts[index] = e.contact;
